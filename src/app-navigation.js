@@ -28,16 +28,28 @@ export const navigation = [
     icon: 'detailslayout',
     items: [
       {
-        text: 'Ingresos',
+        text: 'Entradas',
         path: '/inputs'
+      },
+      {
+        text: 'Salidas',
+        path: '/outputs'
+      },
+      {
+        text: 'Traslados',
+        path: '/transfers'
       },
       {
         text: 'Transformaciones',
         path: '/transformations'
       },
       {
-        text: 'Salidas',
-        path: '/outputs'
+        text: 'Conversiones',
+        path: '/converts'
+      },
+      {
+        text: 'Contabilidad',
+        path: '/accounting'
       }
     ]
   },
@@ -46,16 +58,28 @@ export const navigation = [
     icon: 'preferences',
     items: [
       {
+        text: 'Ubicaciones',
+        path: '/locations'
+      },
+      {
         text: 'Items',
         path: '/items'
       },
       {
-        text: 'Categorías',
-        path: '/item-categories'
+        text: 'Unidades de Medida',
+        path: '/metric-units'
       },
       {
-        text: 'Unidades de Medida',
-        path: '/measurement-units'
+        text: 'Costos',
+        path: '/costs'
+      },
+      {
+        text: 'Vehículos',
+        path: '/vehicles'
+      },
+      {
+        text: 'Conductores',
+        path: '/drivers'
       }
     ]
   },
@@ -87,4 +111,4 @@ export const navigation = [
     path: '/signout',
     icon: 'runner'
   }
-  ];
+];
