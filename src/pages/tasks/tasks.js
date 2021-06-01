@@ -14,7 +14,7 @@ export default () => (
     <h2 className={'content-block'}>Tasks</h2>
     
     <div className={'content-block'}>
-      <Button text="Create a new task" type="default" icon="add" />
+      <Button text="Create a new task" type="default" icon="file" />
     </div>
     
     <div className={'content-block'}>
