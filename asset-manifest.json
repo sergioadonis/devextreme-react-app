@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/devextreme-react-app/static/css/main.e6e1e35f.chunk.css",
-    "main.js": "/devextreme-react-app/static/js/main.e49b7795.chunk.js",
-    "main.js.map": "/devextreme-react-app/static/js/main.e49b7795.chunk.js.map",
+    "main.js": "/devextreme-react-app/static/js/main.f9ce2d8e.chunk.js",
+    "main.js.map": "/devextreme-react-app/static/js/main.f9ce2d8e.chunk.js.map",
     "runtime-main.js": "/devextreme-react-app/static/js/runtime-main.16fc1daf.js",
     "runtime-main.js.map": "/devextreme-react-app/static/js/runtime-main.16fc1daf.js.map",
     "static/css/2.15ca6089.chunk.css": "/devextreme-react-app/static/css/2.15ca6089.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.15ca6089.chunk.css",
     "static/js/2.516deb4d.chunk.js",
     "static/css/main.e6e1e35f.chunk.css",
-    "static/js/main.e49b7795.chunk.js"
+    "static/js/main.f9ce2d8e.chunk.js"
   ]
 }
