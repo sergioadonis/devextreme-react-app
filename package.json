@@ -49,6 +49,5 @@
   "devDependencies": {
     "devextreme-cli": "1.2.14",
     "devextreme-themebuilder": "^20.2.4"
-  },
-  "homepage": "https://sergioadonis.github.io/devextreme-react-app/"
+  }
 }
