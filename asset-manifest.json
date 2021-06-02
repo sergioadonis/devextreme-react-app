@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/devextreme-react-app/static/css/main.e6e1e35f.chunk.css",
-    "main.js": "/devextreme-react-app/static/js/main.f9ce2d8e.chunk.js",
-    "main.js.map": "/devextreme-react-app/static/js/main.f9ce2d8e.chunk.js.map",
-    "runtime-main.js": "/devextreme-react-app/static/js/runtime-main.16fc1daf.js",
-    "runtime-main.js.map": "/devextreme-react-app/static/js/runtime-main.16fc1daf.js.map",
+    "main.js": "/devextreme-react-app/static/js/main.62242010.chunk.js",
+    "main.js.map": "/devextreme-react-app/static/js/main.62242010.chunk.js.map",
+    "runtime-main.js": "/devextreme-react-app/static/js/runtime-main.24b80e4d.js",
+    "runtime-main.js.map": "/devextreme-react-app/static/js/runtime-main.24b80e4d.js.map",
     "static/css/2.15ca6089.chunk.css": "/devextreme-react-app/static/css/2.15ca6089.chunk.css",
-    "static/js/2.516deb4d.chunk.js": "/devextreme-react-app/static/js/2.516deb4d.chunk.js",
-    "static/js/2.516deb4d.chunk.js.map": "/devextreme-react-app/static/js/2.516deb4d.chunk.js.map",
-    "static/js/3.22fae19b.chunk.js": "/devextreme-react-app/static/js/3.22fae19b.chunk.js",
-    "static/js/3.22fae19b.chunk.js.map": "/devextreme-react-app/static/js/3.22fae19b.chunk.js.map",
+    "static/js/2.112f3333.chunk.js": "/devextreme-react-app/static/js/2.112f3333.chunk.js",
+    "static/js/2.112f3333.chunk.js.map": "/devextreme-react-app/static/js/2.112f3333.chunk.js.map",
+    "static/js/3.13c9559e.chunk.js": "/devextreme-react-app/static/js/3.13c9559e.chunk.js",
+    "static/js/3.13c9559e.chunk.js.map": "/devextreme-react-app/static/js/3.13c9559e.chunk.js.map",
     "index.html": "/devextreme-react-app/index.html",
     "static/css/2.15ca6089.chunk.css.map": "/devextreme-react-app/static/css/2.15ca6089.chunk.css.map",
     "static/css/main.e6e1e35f.chunk.css.map": "/devextreme-react-app/static/css/main.e6e1e35f.chunk.css.map",
-    "static/js/2.516deb4d.chunk.js.LICENSE.txt": "/devextreme-react-app/static/js/2.516deb4d.chunk.js.LICENSE.txt",
+    "static/js/2.112f3333.chunk.js.LICENSE.txt": "/devextreme-react-app/static/js/2.112f3333.chunk.js.LICENSE.txt",
     "static/media/theme.additional.css": "/devextreme-react-app/static/media/dxicons.d8b3a23c.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.16fc1daf.js",
+    "static/js/runtime-main.24b80e4d.js",
     "static/css/2.15ca6089.chunk.css",
-    "static/js/2.516deb4d.chunk.js",
+    "static/js/2.112f3333.chunk.js",
     "static/css/main.e6e1e35f.chunk.css",
-    "static/js/main.f9ce2d8e.chunk.js"
+    "static/js/main.62242010.chunk.js"
   ]
 }
