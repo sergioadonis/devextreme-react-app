@@ -1,6 +1,6 @@
 {
   "items": [],
-  "baseTheme": "generic.light",
+  "baseTheme": "generic.greenmist",
   "assetsBasePath": "../../../node_modules/devextreme/dist/css/",
   "outputColorScheme": "base",
   "base": true
