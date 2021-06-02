@@ -44,10 +44,6 @@ export const navigation = [
         path: '/transformations'
       },
       {
-        text: 'Conversiones',
-        path: '/converts'
-      },
-      {
         text: 'Contabilidad',
         path: '/accounting'
       }
@@ -66,8 +62,8 @@ export const navigation = [
         path: '/items'
       },
       {
-        text: 'Unidades de Medida',
-        path: '/metric-units'
+        text: 'Conversiones',
+        path: '/conversions'
       },
       {
         text: 'Costos',
@@ -84,24 +80,6 @@ export const navigation = [
     ]
   },
   {
-    text: 'Administración',
-    icon: 'group',
-    items: [
-      {
-        text: 'Usuarios',
-        path: '/users'
-      },
-      {
-        text: 'Grupos',
-        path: '/groups'
-      },
-      {
-        text: 'Permisos',
-        path: '/permissions'
-      }
-    ]
-  },
-  {
     text: 'Perfil',
     path: '/profile',
     icon: 'user'
@@ -112,3 +90,23 @@ export const navigation = [
     icon: 'runner'
   }
 ];
+
+// eslint-disable-next-line
+const notUsed = {
+  text: 'Administración',
+  icon: 'group',
+  items: [
+    {
+      text: 'Usuarios',
+      path: '/users'
+    },
+    {
+      text: 'Grupos',
+      path: '/groups'
+    },
+    {
+      text: 'Permisos',
+      path: '/permissions'
+    }
+  ]
+};
