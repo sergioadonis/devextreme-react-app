@@ -15,7 +15,7 @@ jobs:
           npm ci
           npm run build
         env:
-          - PUBLIC_URL=/${{ github.event.repository.name }}/
+          PUBLIC_URL: /${{ github.event.repository.name }}/
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.3
