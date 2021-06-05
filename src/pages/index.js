@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 // import { useAuth } from '../contexts/auth';
 import { useAuth0 } from '@auth0/auth0-react';
 
+const publicUrl = process.env.PUBLIC_URL || '';
+
 const SignoutPage = () => {
   const { logout } = useAuth0();
 
-  useEffect(logout);
+  useEffect(() => logout({ returnTo: window.location.origin + publicUrl }));
 
   return (
     <div>
