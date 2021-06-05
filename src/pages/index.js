@@ -1,19 +1,20 @@
-import { useEffect } from 'react'
-import { useAuth } from '../contexts/auth';
+import { useEffect } from 'react';
+// import { useAuth } from '../contexts/auth';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const SignoutPage = () => {
-    const { signOut } = useAuth();
-    
-    useEffect(signOut);
-    
-    return (
+  const { logout } = useAuth0();
+
+  useEffect(logout);
+
+  return (
     <div>
       <p>You clicked signout</p>
     </div>
   );
-}
+};
 
 export { default as HomePage } from './home/home';
 export { default as ProfilePage } from './profile/profile';
 export { default as TasksPage } from './tasks/tasks';
-export { SignoutPage }
+export { SignoutPage };

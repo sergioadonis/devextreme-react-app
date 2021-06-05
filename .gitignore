@@ -24,3 +24,5 @@ yarn-error.log*
 
 # generated built theme files
 /src/themes/generated
+
+.env

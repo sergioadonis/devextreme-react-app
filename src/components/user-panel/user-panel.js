@@ -1,18 +1,54 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import ContextMenu, { Position } from 'devextreme-react/context-menu';
 import List from 'devextreme-react/list';
-import { useAuth } from '../../contexts/auth';
+// import { useAuth } from '../../contexts/auth';
+import { useAuth0 } from '@auth0/auth0-react';
 import './user-panel.scss';
 
+const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+// const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+
 export default function ({ menuMode }) {
-  const { user, signOut } = useAuth();
+  // const { user, signOut } = useAuth();
+  const { user, logout, getAccessTokenSilently } = useAuth0();
   const history = useHistory();
+
+  const [userMetadata, setUserMetadata] = useState(null);
+
+  useEffect(() => {
+    const getUserMetadata = async () => {
+      try {
+        const accessToken = await getAccessTokenSilently({
+          audience: `https://${domain}/api/v2/`,
+          scope: 'read:current_user'
+        });
+
+        const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
+
+        const metadataResponse = await fetch(userDetailsByIdUrl, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        });
+
+        const { user_metadata } = await metadataResponse.json();
+        // console.log(user_metadata);
+
+        setUserMetadata(user_metadata);
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
+
+    getUserMetadata();
+  }, [getAccessTokenSilently, user]);
 
   const navigateToProfile = useCallback(
     () => history.push('/profile'),
     [history]
   );
+
   const menuItems = useMemo(
     () => [
       {
@@ -23,24 +59,26 @@ export default function ({ menuMode }) {
       {
         text: 'Logout',
         icon: 'runner',
-        onClick: signOut
+        onClick: logout
       }
     ],
-    [navigateToProfile, signOut]
+    [navigateToProfile, logout]
   );
 
   return (
     <div className={'user-panel'}>
       <div className={'user-info'}>
-        <div className={'image-container'}>
-          <div
-            style={{
-              background: `url(${user.avatarUrl}) no-repeat #fff`,
-              backgroundSize: 'cover'
-            }}
-            className={'user-image'}
-          />
-        </div>
+        {userMetadata && userMetadata.avatar_url && (
+          <div className={'image-container'}>
+            <div
+              style={{
+                background: `url(${userMetadata.avatar_url}) no-repeat #fff`,
+                backgroundSize: 'cover'
+              }}
+              className={'user-image'}
+            />
+          </div>
+        )}
         <div className={'user-name'}>{user.email}</div>
       </div>
 
