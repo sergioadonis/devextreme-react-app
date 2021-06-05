@@ -16,8 +16,6 @@ const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 const publicUrl = process.env.PUBLIC_URL || '';
 
-console.log('PUBLIC_URL', publicUrl);
-
 function App() {
   const { user, isLoading } = useAuth0();
 
