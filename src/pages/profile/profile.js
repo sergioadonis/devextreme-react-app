@@ -63,7 +63,7 @@ export default () => {
         {userMetadata && userMetadata.avatar_url && (
           <div className={'content-block dx-card responsive-paddings'}>
             <div className={'form-avatar'}>
-              <img alt={''} src={userMetadata.avatar_url} />
+              <img alt={''} src={user.picture} />
             </div>
             <span>{notes}</span>
           </div>

@@ -72,7 +72,7 @@ export default function ({ menuMode }) {
           <div className={'image-container'}>
             <div
               style={{
-                background: `url(${userMetadata.avatar_url}) no-repeat #fff`,
+                background: `url(${user.picture}) no-repeat #fff`,
                 backgroundSize: 'cover'
               }}
               className={'user-image'}
@@ -87,7 +87,7 @@ export default function ({ menuMode }) {
           items={menuItems}
           target={'.user-button'}
           showEvent={'dxclick'}
-          width={210}
+          width={400}
           cssClass={'user-menu'}
         >
           <Position my={'top center'} at={'bottom center'} />
