@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react';
-import { useHistory } from "react-router-dom";
+import React, { useMemo, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import ContextMenu, { Position } from 'devextreme-react/context-menu';
 import List from 'devextreme-react/list';
 import { useAuth } from '../../contexts/auth';
@@ -9,21 +9,25 @@ export default function ({ menuMode }) {
   const { user, signOut } = useAuth();
   const history = useHistory();
 
-  function navigateToProfile() {
-    history.push("/profile");
-  }
-  const menuItems = useMemo(() => ([
-    {
-      text: 'Profile',
-      icon: 'user',
-      onClick: navigateToProfile
-    },
-    {
-      text: 'Logout',
-      icon: 'runner',
-      onClick: signOut
-    }
-  ]), [signOut]);
+  const navigateToProfile = useCallback(
+    () => history.push('/profile'),
+    [history]
+  );
+  const menuItems = useMemo(
+    () => [
+      {
+        text: 'Profile',
+        icon: 'user',
+        onClick: navigateToProfile
+      },
+      {
+        text: 'Logout',
+        icon: 'runner',
+        onClick: signOut
+      }
+    ],
+    [navigateToProfile, signOut]
+  );
 
   return (
     <div className={'user-panel'}>
@@ -34,7 +38,8 @@ export default function ({ menuMode }) {
               background: `url(${user.avatarUrl}) no-repeat #fff`,
               backgroundSize: 'cover'
             }}
-            className={'user-image'} />
+            className={'user-image'}
+          />
         </div>
         <div className={'user-name'}>{user.email}</div>
       </div>

@@ -8,44 +8,41 @@ import './side-navigation-menu.scss';
 import * as events from 'devextreme/events';
 
 export default function (props) {
-  const {
-    children,
-    selectedItemChanged,
-    openMenu,
-    compactMode,
-    onMenuReady
-  } = props;
+  const { children, selectedItemChanged, openMenu, compactMode, onMenuReady } =
+    props;
 
   const { isLarge } = useScreenSize();
-  function normalizePath () {    
+  function normalizePath() {
     return navigation.map((item) => {
-      if(item.path && !(/^\//.test(item.path))){ 
+      if (item.path && !/^\//.test(item.path)) {
         item.path = `/${item.path}`;
       }
-      return {...item, expanded: isLarge}; 
+      return { ...item, expanded: isLarge };
     });
   }
 
-  const items = useMemo(
-    normalizePath,
-    []
-  );
+  const items = useMemo(normalizePath, [normalizePath]);
 
-  const { navigationData: { currentPath } } = useNavigation();
+  const {
+    navigationData: { currentPath }
+  } = useNavigation();
 
   const treeViewRef = useRef();
   const wrapperRef = useRef();
-  const getWrapperRef = useCallback((element) => {
-    const prevElement = wrapperRef.current;
-    if (prevElement) {
-      events.off(prevElement, 'dxclick');
-    }
+  const getWrapperRef = useCallback(
+    (element) => {
+      const prevElement = wrapperRef.current;
+      if (prevElement) {
+        events.off(prevElement, 'dxclick');
+      }
 
-    wrapperRef.current = element;
-    events.on(element, 'dxclick', e => {
-      openMenu(e);
-    });
-  }, [openMenu]);
+      wrapperRef.current = element;
+      events.on(element, 'dxclick', (e) => {
+        openMenu(e);
+      });
+    },
+    [openMenu]
+  );
 
   useEffect(() => {
     const treeView = treeViewRef.current && treeViewRef.current.instance;
