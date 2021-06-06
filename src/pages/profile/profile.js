@@ -60,7 +60,7 @@ export default () => {
       <React.Fragment>
         <h2 className={'content-block'}>Profile</h2>
 
-        {userMetadata && userMetadata.avatar_url && (
+        {user && user.picture && (
           <div className={'content-block dx-card responsive-paddings'}>
             <div className={'form-avatar'}>
               <img alt={''} src={user.picture} />
