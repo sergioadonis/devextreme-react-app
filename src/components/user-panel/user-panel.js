@@ -69,7 +69,7 @@ export default function ({ menuMode }) {
   return (
     <div className={'user-panel'}>
       <div className={'user-info'}>
-        {userMetadata && userMetadata.avatar_url && (
+        {user && user.picture && (
           <div className={'image-container'}>
             <div
               style={{
