@@ -4,3 +4,4 @@ build
 .gitignore
 Dockerfile
 Dockerfile.prod
+.env
