@@ -41,7 +41,7 @@ export default function () {
         redirectUri={window.location.origin + publicUrl}
         useRefreshTokens={true}
         audience={`https://${domain}/api/v2/`}
-        // scope="read:current_user update:current_user_metadata"
+        scope="read:current_user"
       >
         <NavigationProvider>
           <div className={`app ${screenSizeClass}`}>

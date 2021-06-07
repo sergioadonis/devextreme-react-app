@@ -1,47 +1,19 @@
 import React, { useState } from 'react';
 import './profile.scss';
 import Form from 'devextreme-react/form';
+import LoadPanel from 'devextreme-react/load-panel';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useUserMetadata } from '../../api/user-metadata';
 
-// const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-// const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 
 export default () => {
   const [notes, setNotes] = useState(
     'Sandra is a CPA and has been our controller since 2008. She loves to interact with staff so if you`ve not met her, be certain to say hi.\r\n\r\nSandra has 2 daughters both of whom are accomplished gymnasts.'
   );
-
-  const { user, isAuthenticated } = useAuth0();
-  // const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
-  // const [userMetadata, setUserMetadata] = useState(null);
-
-  // useEffect(() => {
-  //   const getUserMetadata = async () => {
-  //     try {
-  //       const accessToken = await getAccessTokenSilently({
-  //         audience: `https://${domain}/api/v2/`,
-  //         scope: 'read:current_user'
-  //       });
-
-  //       const userDetailsByIdUrl = `https://${domain}/api/v2/users/${user.sub}`;
-
-  //       const metadataResponse = await fetch(userDetailsByIdUrl, {
-  //         headers: {
-  //           Authorization: `Bearer ${accessToken}`
-  //         }
-  //       });
-
-  //       const { user_metadata } = await metadataResponse.json();
-  //       // console.log(user_metadata);
-
-  //       setUserMetadata(user_metadata);
-  //     } catch (e) {
-  //       console.log(e.message);
-  //     }
-  //   };
-
-  //   getUserMetadata();
-  // }, [getAccessTokenSilently, user]);
+  
+  const { user } = useAuth0();
+  const { data, loading, error } = useUserMetadata({userId: user.sub, domain});
 
   const employee = {
     ID: 7,
@@ -53,11 +25,11 @@ export default () => {
     BirthDate: new Date('1974/11/15'),
     HireDate: new Date('2005/05/11'),
     Notes: notes,
-    Address: '4600 N Virginia Rd.'
+    Address: '4600 N Virginia Rd.',
+    UserMetadata: error ? error : JSON.stringify(data)
   };
 
   return (
-    isAuthenticated && (
       <React.Fragment>
         <h2 className={'content-block'}>Profile</h2>
 
@@ -70,19 +42,20 @@ export default () => {
           </div>
         )}
 
-        <div className={'content-block dx-card responsive-paddings'}>
-          <Form
-            id={'form'}
-            defaultFormData={employee}
-            onFieldDataChanged={(e) =>
-              e.dataField === 'Notes' && setNotes(e.value)
-            }
-            labelLocation={'top'}
-            colCountByScreen={colCountByScreen}
-          />
-        </div>
+        {!loading ? (
+          <div className={'content-block dx-card responsive-paddings'}>
+            <Form
+              id={'form'}
+              defaultFormData={employee}
+              onFieldDataChanged={(e) =>
+                e.dataField === 'Notes' && setNotes(e.value)
+              }
+              labelLocation={'top'}
+              colCountByScreen={colCountByScreen}
+            />
+          </div>
+        ) : <LoadPanel visible={true} />}
       </React.Fragment>
-    )
   );
 };
 
