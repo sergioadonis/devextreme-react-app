@@ -78,16 +78,6 @@ export const navigation = [
         path: '/drivers'
       }
     ]
-  },
-  {
-    text: 'Perfil',
-    path: '/profile',
-    icon: 'user'
-  },
-  {
-    text: 'Salir',
-    path: '/signout',
-    icon: 'runner'
   }
 ];
 
