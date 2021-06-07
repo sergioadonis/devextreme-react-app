@@ -5,15 +5,13 @@ import LoadPanel from 'devextreme-react/load-panel';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useUserMetadata } from '../../api/user-metadata';
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-
 export default () => {
   const [notes, setNotes] = useState(
     'Sandra is a CPA and has been our controller since 2008. She loves to interact with staff so if you`ve not met her, be certain to say hi.\r\n\r\nSandra has 2 daughters both of whom are accomplished gymnasts.'
   );
   
   const { user } = useAuth0();
-  const { data, loading, error } = useUserMetadata({userId: user.sub, domain});
+  const { data, loading, error } = useUserMetadata({userId: user.sub});
 
   const employee = {
     ID: 7,

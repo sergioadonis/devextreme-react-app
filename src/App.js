@@ -6,15 +6,12 @@ import { HashRouter as Router } from 'react-router-dom';
 import './dx-styles.scss';
 import LoadPanel from 'devextreme-react/load-panel';
 import { NavigationProvider } from './contexts/navigation';
-// import { AuthProvider, useAuth } from './contexts/auth';
+import { useEnvironment } from './contexts/environment';
 import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 import { useScreenSizeClass } from './utils/media-query';
 import Content from './Content';
 import UnauthenticatedContent from './UnauthenticatedContent';
 
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-const publicUrl = process.env.PUBLIC_URL || '';
 
 function App() {
   const { user, isLoading } = useAuth0();
@@ -32,23 +29,24 @@ function App() {
 
 export default function () {
   const screenSizeClass = useScreenSizeClass();
+  const { publicUrl, auth0ClientId, auth0Domain } = useEnvironment();
 
   return (
     <Router>
-      <Auth0Provider
-        domain={domain}
-        clientId={clientId}
-        redirectUri={window.location.origin + publicUrl}
-        useRefreshTokens={true}
-        audience={`https://${domain}/api/v2/`}
-        scope="read:current_user"
-      >
-        <NavigationProvider>
-          <div className={`app ${screenSizeClass}`}>
-            <App />
-          </div>
-        </NavigationProvider>
-      </Auth0Provider>
+        <Auth0Provider
+          domain={auth0Domain}
+          clientId={auth0ClientId}
+          redirectUri={window.location.origin + publicUrl}
+          useRefreshTokens={true}
+          audience={`https://${auth0Domain}/api/v2/`}
+          scope="read:current_user"
+        >
+          <NavigationProvider>
+            <div className={`app ${screenSizeClass}`}>
+              <App />
+            </div>
+          </NavigationProvider>
+        </Auth0Provider>
     </Router>
   );
 }

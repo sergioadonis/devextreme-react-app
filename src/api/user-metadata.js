@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { useEnvironment } from '../contexts/environment';
 
-function useUserMetadata ({userId, domain}) {
+function useUserMetadata ({userId}) {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState();
-    
+    const { auth0Domain } = useEnvironment();
     const { getAccessTokenSilently } = useAuth0();
     
     useEffect(() => {
        async function fetchData () {
            try {
                const accessToken = await getAccessTokenSilently({
-                   audience: `https://${domain}/api/v2/`,
+                   audience: `https://${auth0Domain}/api/v2/`,
                    scope: 'read:current_user'
                });
                
-               const userDetailsByIdUrl = `https://${domain}/api/v2/users/${userId}`;
+               const userDetailsByIdUrl = `https://${auth0Domain}/api/v2/users/${userId}`;
                
                const metadataResponse = await fetch(userDetailsByIdUrl, {
                    headers: {
@@ -35,7 +36,7 @@ function useUserMetadata ({userId, domain}) {
        } 
        
        fetchData();
-    }, [getAccessTokenSilently, userId, domain]);
+    }, [getAccessTokenSilently, userId, auth0Domain]);
     
     return { data, loading, error };
 }
