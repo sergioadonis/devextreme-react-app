@@ -11,7 +11,7 @@ export default () => {
   );
   
   const { user } = useAuth0();
-  const { data, loading, error } = useUserMetadata({userId: user.sub});
+  const { userMetadata, loading, error } = useUserMetadata({userId: user.sub});
 
   const employee = {
     ID: 7,
@@ -24,7 +24,7 @@ export default () => {
     HireDate: new Date('2005/05/11'),
     Notes: notes,
     Address: '4600 N Virginia Rd.',
-    UserMetadata: error ? error : JSON.stringify(data)
+    UserMetadata: error ? error : JSON.stringify(userMetadata)
   };
 
   return (
