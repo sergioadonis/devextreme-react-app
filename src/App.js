@@ -13,7 +13,6 @@ import { useScreenSizeClass } from './utils/media-query';
 import Content from './Content';
 import UnauthenticatedContent from './UnauthenticatedContent';
 
-
 function App() {
   const { user, isLoading } = useAuth0();
 
@@ -30,18 +29,19 @@ function App() {
 
 export default function () {
   const screenSizeClass = useScreenSizeClass();
-  const { publicUrl, auth0ClientId, auth0Domain, auth0Scope } = useEnvironment();
+  const { publicUrl, auth0ClientId, auth0Domain, auth0Scope, auth0Audience } =
+    useEnvironment();
 
   return (
     <Router>
       <Auth0Provider
-          domain={auth0Domain}
-          clientId={auth0ClientId}
-          redirectUri={window.location.origin + publicUrl}
-          useRefreshTokens={true}
-          audience={`https://${auth0Domain}/api/v2/`}
-          scope={auth0Scope}
-        >
+        domain={auth0Domain}
+        clientId={auth0ClientId}
+        redirectUri={window.location.origin + publicUrl}
+        useRefreshTokens={true}
+        audience={auth0Audience}
+        scope={auth0Scope}
+      >
         <AccessTokenProvider scope={auth0Scope}>
           <NavigationProvider>
             <div className={`app ${screenSizeClass}`}>
