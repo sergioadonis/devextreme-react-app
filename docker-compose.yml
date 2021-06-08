@@ -6,9 +6,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        - REACT_APP_AUTH0_CLIENT_ID=${REACT_APP_AUTH0_CLIENT_ID}
-        - REACT_APP_AUTH0_DOMAIN=${REACT_APP_AUTH0_DOMAIN}
+      # args:
+      #   - REACT_APP_AUTH0_CLIENT_ID=${REACT_APP_AUTH0_CLIENT_ID}
+      #   - REACT_APP_AUTH0_DOMAIN=${REACT_APP_AUTH0_DOMAIN}
     volumes:
       - '.:/app'
       - '/app/node_modules'
