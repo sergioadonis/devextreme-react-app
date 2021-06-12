@@ -1,6 +1,6 @@
 import Drawer from 'devextreme-react/drawer';
 import ScrollView from 'devextreme-react/scroll-view';
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Header, SideNavigationMenu, Footer } from '../../components';
 import './side-nav-outer-toolbar.scss';
@@ -16,6 +16,18 @@ export default function ({ title, children }) {
   const [menuStatus, setMenuStatus] = useState(
     isLarge ? MenuStatus.Opened : MenuStatus.Closed
   );
+
+  const [prevIsLarge, setPrevIsLarge] = useState(isLarge);
+
+  useEffect(() => {
+    if (isLarge && !prevIsLarge)
+      setMenuStatus(MenuStatus.Opened);
+
+    if (!isLarge && prevIsLarge)
+      setMenuStatus(MenuStatus.Closed);
+
+    setPrevIsLarge(isLarge);
+  }, [isLarge, prevIsLarge]);
 
   const toggleMenu = useCallback(({ event }) => {
     setMenuStatus(
